@@ -1,7 +1,11 @@
+"""Business logic for leave request processing."""
+
 leave_requests = []
 leave_history = []
 
 def submit_leave(data):
+    """Submit leave request after validation."""
+
     required = ["employee_id", "start_date", "end_date", "leave_type", "reason"]
 
     for field in required:
@@ -24,6 +28,7 @@ def submit_leave(data):
 
 
 def approve_leave(employee_id, comment=""):
+    """Approve leave request for an employee."""
     for req in leave_requests:
         if req["employee_id"] == employee_id:
             req["status"] = "Approved"
@@ -32,3 +37,5 @@ def approve_leave(employee_id, comment=""):
             return {"message": "Leave approved"}, 200
 
     return {"message": "Request not found"}, 404
+
+

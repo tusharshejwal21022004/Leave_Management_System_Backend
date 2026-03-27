@@ -1,3 +1,5 @@
+"""Flask API for leave management system."""
+
 from flask import Flask, request, jsonify
 from leave_service import submit_leave, approve_leave
 
@@ -5,6 +7,7 @@ app = Flask(__name__)
 
 @app.route("/leave_requests", methods=["POST"])
 def create_leave():
+    """Create leave request API endpoint."""
     data = request.get_json()
 
     if not data:
@@ -28,3 +31,4 @@ def approve(employee_id):
 
 if __name__ == "__main__":
     app.run()
+

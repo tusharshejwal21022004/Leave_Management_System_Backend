@@ -2,6 +2,7 @@ from leave_service import submit_leave
 
 
 def test_submit_leave_success():
+    """Test successful leave submission."""
     data = {
         "employee_id": "101",
         "start_date": "2026-03-28",
@@ -10,10 +11,10 @@ def test_submit_leave_success():
         "reason": "Family Function"
     }
 
-    result, code = submit_leave(data)
+    _, code = submit_leave(data)
 
     if code != 200:
-        raise Exception("Leave submission failed")
+        raise ValueError("Leave submission failed")
 
 
 def test_missing_field():
@@ -29,3 +30,4 @@ def test_missing_field():
 
     if code != 400:
         raise Exception("Validation failed")
+
